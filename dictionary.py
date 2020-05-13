@@ -45,11 +45,13 @@ while has_word_translated == False:
     else:
         print(output)
 
+        #if SequenceMatcher(None, word.lower(), get_close_matches(word, data.keys())[0]).ratio() == 1:
+
     if len(get_close_matches(word, data.keys())) > 0:
-        if SequenceMatcher(None, word, get_close_matches(word, data.keys())[0]).ratio() == 1:
+        if word.lower() in data:
             spaces()
-            has_word_translated = keep_running()
-        else:
+            has_word_translated = keep_running()    
+        elif len(get_close_matches(word, data.keys())) > 0:
             yes_or_no = input("If yes type 'Y' if no type 'N': ")
             if yes_or_no.upper() == 'Y':
                 spaces()
